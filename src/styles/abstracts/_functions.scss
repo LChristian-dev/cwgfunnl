@@ -1,0 +1,93 @@
+// =============================================================================
+// FUNCTIONS
+// =============================================================================
+
+@use 'sass:math';
+@use 'sass:color';
+@use 'sass:string';
+@use 'sass:map';
+
+// Convert px to rem
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+// Convert px to em (relative to parent font size)
+@function em($px, $base: 16) {
+  @return math.div($px, $base) * 1em;
+}
+
+// Clamp font size for fluid typography
+@function fluid($min-size, $max-size, $min-vw: 320px, $max-vw: 1280px) {
+  $slope: math.div($max-size - $min-size, $max-vw - $min-vw);
+  $intercept: $min-size - $slope * $min-vw;
+  @return clamp(#{$min-size}, #{$intercept} + #{$slope * 100}vw, #{$max-size});
+}
+
+// Strip units from a value
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+// Color tint (mix with white)
+@function tint($color, $percent) {
+  @return color.mix(white, $color, $percent);
+}
+
+// Color shade (mix with black)
+@function shade($color, $percent) {
+  @return color.mix(black, $color, $percent);
+}
+
+// Adjust color alpha
+@function alpha($color, $opacity) {
+  @return color.adjust($color, $alpha: $opacity - 1);
+}
+
+// Z-index lookup
+$z-layers: (
+  'below':    -1,
+  'base':      0,
+  'raised':    10,
+  'dropdown':  100,
+  'sticky':    200,
+  'overlay':   300,
+  'modal':     400,
+  'toast':     500,
+);
+
+@function z($layer) {
+  @if map.has-key($z-layers, $layer) {
+    @return map.get($z-layers, $layer);
+  }
+  @warn "Unknown z-index layer `#{$layer}`.";
+  @return null;
+}
+
+// Spacing multiplier
+@function space($multiplier) {
+  @return $multiplier * 0.25rem;
+}
+
+// Map deep-get
+@function map-deep-get($map, $keys...) {
+  $result: $map;
+  @each $key in $keys {
+    $result: map.get($result, $key);
+  }
+  @return $result;
+}
+
+// Contrast ratio helper — returns light or dark color for readable text
+@function contrast-color($bg, $light: #ffffff, $dark: #08080f) {
+  $luminance: (
+    red($bg) * 0.2126 +
+    green($bg) * 0.7152 +
+    blue($bg) * 0.0722
+  ) / 255;
+  @if $luminance > 0.55 {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}

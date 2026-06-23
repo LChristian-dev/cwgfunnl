@@ -1,0 +1,76 @@
+// =============================================================================
+// TYPOGRAPHY
+// =============================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Google Fonts import
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap');
+
+body {
+  font-family: $font-primary;
+  font-size: $text-base;
+  font-weight: $fw-regular;
+  line-height: $lh-normal;
+  color: $color-light;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  font-weight: $fw-bold;
+  line-height: $lh-tight;
+  letter-spacing: $ls-snug;
+  color: $color-white;
+}
+
+h1 { font-size: clamp($text-4xl, 5vw + 1rem, $text-7xl); }
+h2 { font-size: clamp($text-3xl, 3.5vw + 0.5rem, $text-5xl); }
+h3 { font-size: clamp($text-2xl, 2.5vw + 0.25rem, $text-4xl); }
+h4 { font-size: clamp($text-xl, 2vw, $text-3xl); }
+h5 { font-size: $text-xl; }
+h6 { font-size: $text-lg; }
+
+p {
+  line-height: $lh-relaxed;
+  color: $color-gray-light;
+}
+
+strong, b { font-weight: $fw-semibold; }
+em, i     { font-style: italic; }
+
+small { font-size: $text-sm; }
+
+// Section label / eyebrow
+.eyebrow {
+  @include badge;
+  margin-bottom: $space-4;
+}
+
+// Display headline utility
+.display {
+  font-family: $font-display;
+  font-weight: $fw-extrabold;
+  letter-spacing: $ls-tight;
+}
+
+// Lead paragraph
+.lead {
+  font-size: $text-xl;
+  line-height: $lh-relaxed;
+  color: $color-gray-light;
+
+  @include respond-below('md') {
+    font-size: $text-lg;
+  }
+}
+
+// Gradient text utility
+.gradient-text {
+  @include gradient-text;
+}
+
+.gradient-text--warm {
+  @include gradient-text($color-secondary, $color-warning);
+}

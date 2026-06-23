@@ -1,0 +1,13 @@
+// =============================================================================
+// MAIN ENTRY — imports order matters
+// =============================================================================
+
+// 1. Abstracts (no output — variables, functions, mixins)
+@use 'abstracts/variables' as *;
+@use 'abstracts/functions' as *;
+@use 'abstracts/mixins' as *;
+
+// 2. Base (global output)
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/global';

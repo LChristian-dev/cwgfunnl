@@ -1,0 +1,128 @@
+// =============================================================================
+// GLOBAL
+// =============================================================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Background
+body {
+  background-color: $color-dark;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// Container
+.container {
+  @include container;
+}
+
+.container--wide {
+  @include container($container-wide);
+}
+
+.container--narrow {
+  @include container($container-narrow);
+}
+
+// Section spacing
+.section {
+  @include section-padding;
+  position: relative;
+}
+
+// Button utilities
+.btn {
+  @include btn-base;
+}
+
+.btn--primary {
+  @include btn-primary;
+}
+
+.btn--secondary {
+  @include btn-secondary;
+}
+
+.btn--cta {
+  @include btn-cta;
+}
+
+.btn--lg {
+  padding: $space-5 $space-10;
+  font-size: $text-lg;
+}
+
+// Section headings
+.section__header {
+  text-align: center;
+  margin-bottom: $space-16;
+
+  @include respond-below('md') {
+    margin-bottom: $space-10;
+  }
+}
+
+.section__title {
+  margin-bottom: $space-4;
+}
+
+.section__subtitle {
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+// Divider
+.divider {
+  height: 1px;
+  background: $color-border;
+  border: none;
+}
+
+// Scroll animations hook
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity $transition-slow, transform $transition-slow;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Focus outline global
+:focus-visible {
+  outline: 2px solid $color-primary;
+  outline-offset: 3px;
+  border-radius: $radius-sm;
+}
+
+// Selection
+::selection {
+  background: rgba($color-primary, 0.35);
+  color: $color-white;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: $color-dark;
+}
+::-webkit-scrollbar-thumb {
+  background: $color-dark-4;
+  border-radius: $radius-full;
+  &:hover { background: $color-gray; }
+}
+
+// Grid helpers
+.grid-2 { @include grid(2); @include respond-below('sm') { grid-template-columns: 1fr; } }
+.grid-3 { @include grid(3); @include respond-below('md') { grid-template-columns: 1fr; } }
+.grid-4 { @include grid(4); @include respond-below('lg') { @include grid(2); } @include respond-below('sm') { grid-template-columns: 1fr; } }
+
+// Text utils
+.text-center   { text-align: center; }
+.text-gradient { @include gradient-text; }
+.text-muted    { color: $color-gray; }
