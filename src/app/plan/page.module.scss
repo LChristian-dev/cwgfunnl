@@ -1,5 +1,5 @@
 // =============================================================================
-// SURVEY PAGE MODULE
+// PLAN SELECTION PAGE MODULE
 // =============================================================================
 
 @use '../../styles/abstracts/variables' as *;
@@ -34,7 +34,7 @@
   padding-block: $space-6;
   border-bottom: 1px solid $color-border;
   position: relative;
-  z-index: z('raised');
+  z-index: $z-raised;
 }
 
 .headerInner {
@@ -81,9 +81,9 @@
 
 .main {
   @include container($container-narrow);
-  padding-block: $space-12;
+  padding-block: $space-8;
   position: relative;
-  z-index: z('raised');
+  z-index: $z-raised;
 }
 
 .intro {
@@ -114,78 +114,13 @@
 }
 
 // =============================================================================
-// PROGRESS BAR
+// QUESTION CARD
 // =============================================================================
-
-.progress {
-  margin-bottom: $space-10;
-}
-
-.progressHeader {
-  @include flex-between;
-  margin-bottom: $space-2;
-}
-
-.progressLabel {
-  font-size: $text-sm;
-  color: $color-gray;
-}
-
-.progressCount {
-  font-size: $text-sm;
-  font-weight: $fw-semibold;
-  color: $color-primary-light;
-}
-
-.progressTrack {
-  height: 4px;
-  background: $color-dark-4;
-  border-radius: $radius-full;
-  overflow: hidden;
-}
-
-.progressFill {
-  height: 100%;
-  background: linear-gradient(90deg, $color-primary, $color-secondary);
-  border-radius: $radius-full;
-  transition: width $transition-slow;
-}
-
-// =============================================================================
-// GHL EMBED
-// =============================================================================
-
-.embedWrapper {
-  @include card;
-  padding: 0;
-  overflow: hidden;
-
-  iframe {
-    display: block;
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    border: none;
-    border-radius: $radius-lg;
-  }
-}
-
-// =============================================================================
-// FORM (kept for reference — replaced by GHL embed)
-// =============================================================================
-
-.form {
-  @include flex-column($space-6);
-}
 
 .questionCard {
   @include card;
   padding: $space-8;
-  transition: border-color $transition-base;
-
-  &.active {
-    border-color: rgba($color-primary, 0.3);
-  }
+  margin-bottom: $space-8;
 }
 
 .questionNum {
@@ -212,13 +147,15 @@
 .option {
   display: flex;
   align-items: center;
-  gap: $space-3;
-  padding: $space-4 $space-5;
+  gap: $space-4;
+  padding: $space-5 $space-6;
   background: $color-dark-3;
   border: 1px solid $color-border;
   border-radius: $radius-lg;
   cursor: pointer;
   transition: all $transition-fast;
+  width: 100%;
+  text-align: left;
 
   &:hover {
     background: rgba($color-primary, 0.08);
@@ -262,35 +199,45 @@
   }
 }
 
-.optionLabel {
-  font-size: $text-base;
-  color: $color-gray-light;
-  transition: color $transition-fast;
-  line-height: $lh-snug;
+.optionContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
 }
 
-// Open text question
-.textarea {
-  width: 100%;
-  background: $color-dark-3;
-  border: 1px solid $color-border;
-  border-radius: $radius-lg;
-  padding: $space-4 $space-5;
-  color: $color-white;
-  font-family: $font-primary;
+.optionLabel {
   font-size: $text-base;
-  line-height: $lh-relaxed;
-  resize: vertical;
-  min-height: 120px;
-  transition: border-color $transition-fast;
+  font-weight: $fw-semibold;
+  color: $color-gray-light;
+  transition: color $transition-fast;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
 
-  &::placeholder { color: $color-gray; }
+.optionMeta {
+  font-size: $text-sm;
+  color: $color-gray;
+}
 
-  &:focus {
-    outline: none;
-    border-color: rgba($color-primary, 0.5);
-    background: rgba($color-primary, 0.04);
-  }
+.optionPrice {
+  font-size: $text-lg;
+  font-weight: $fw-bold;
+  color: $color-white;
+  flex-shrink: 0;
+}
+
+.popularBadge {
+  font-size: $text-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: $ls-wide;
+  text-transform: uppercase;
+  color: $color-secondary;
+  background: rgba($color-secondary, 0.12);
+  border: 1px solid rgba($color-secondary, 0.3);
+  border-radius: $radius-full;
+  padding: 2px $space-3;
 }
 
 // =============================================================================
@@ -302,7 +249,6 @@
   flex-direction: column;
   align-items: center;
   gap: $space-4;
-  margin-top: $space-4;
 }
 
 .submitBtn {
@@ -333,9 +279,9 @@
 
 .footer {
   text-align: center;
-  padding-block: $space-8;
+  padding-block: $space-6;
   border-top: 1px solid $color-border;
-  margin-top: $space-12;
+  margin-top: $space-8;
 }
 
 .footerText {

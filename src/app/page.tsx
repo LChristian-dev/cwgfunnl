@@ -600,8 +600,13 @@ export default function Home() {
           <div className={s.footerCol}>
             <h4 className={s.footerColTitle}>Company</h4>
             <div className={s.footerColLinks}>
-              {['About', 'Results', 'FAQ', 'Contact'].map((l) => (
-                <a key={l} href="#" className={s.footerLink}>{l}</a>
+              {[
+                { label: 'About',   href: '#how-it-works' },
+                { label: 'Results', href: '#testimonials' },
+                { label: 'FAQ',     href: '#faq' },
+                { label: 'Contact', href: '#contact' },
+              ].map((l) => (
+                <a key={l.label} href={l.href} className={s.footerLink}>{l.label}</a>
               ))}
             </div>
           </div>
