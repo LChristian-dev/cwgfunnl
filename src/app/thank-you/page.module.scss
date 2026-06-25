@@ -1,0 +1,357 @@
+// =============================================================================
+// THANK YOU PAGE MODULE
+// =============================================================================
+
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+@use '../../styles/abstracts/functions' as *;
+
+// =============================================================================
+// LAYOUT
+// =============================================================================
+
+.page {
+  min-height: 100vh;
+  background: $color-dark;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg {
+  @include absolute-fill;
+  z-index: $z-below;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba($color-accent, 0.12) 0%, transparent 60%),
+              radial-gradient(ellipse 50% 40% at 80% 80%, rgba($color-primary, 0.1) 0%, transparent 50%);
+}
+
+.header {
+  padding-block: $space-6;
+  border-bottom: 1px solid $color-border;
+  position: relative;
+  z-index: z('raised');
+}
+
+.headerInner {
+  @include container;
+  @include flex-between;
+}
+
+.logo {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $fw-extrabold;
+  color: $color-white;
+
+  span { @include gradient-text; }
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-sm;
+  color: $color-gray;
+}
+
+.stepDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background: $color-accent;
+}
+
+// =============================================================================
+// HERO
+// =============================================================================
+
+.hero {
+  @include container($container-narrow);
+  text-align: center;
+  padding-block: $space-16;
+  position: relative;
+  z-index: z('raised');
+}
+
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: $radius-full;
+  background: rgba($color-accent, 0.15);
+  border: 2px solid rgba($color-accent, 0.4);
+  @include flex-center;
+  font-size: 2.5rem;
+  margin-inline: auto;
+  margin-bottom: $space-6;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  @include glow($color-accent, 30px, 0.3);
+}
+
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.eyebrow {
+  @include badge($color-accent);
+  margin-bottom: $space-4;
+}
+
+.title {
+  font-size: clamp($text-3xl, 5vw, $text-6xl);
+  font-weight: $fw-extrabold;
+  letter-spacing: $ls-tight;
+  margin-bottom: $space-4;
+
+  span { @include gradient-text($color-accent, $color-primary); }
+}
+
+.subtitle {
+  font-size: $text-xl;
+  color: $color-gray-light;
+  line-height: $lh-relaxed;
+  max-width: 520px;
+  margin-inline: auto;
+  margin-bottom: $space-10;
+}
+
+// Booking confirmation box
+.bookingBox {
+  @include card;
+  padding: $space-6;
+  max-width: 420px;
+  margin-inline: auto;
+  margin-bottom: $space-12;
+  background: rgba($color-accent, 0.06);
+  border-color: rgba($color-accent, 0.2);
+}
+
+.bookingBoxTitle {
+  font-size: $text-sm;
+  font-weight: $fw-semibold;
+  color: $color-accent;
+  text-transform: uppercase;
+  letter-spacing: $ls-wider;
+  margin-bottom: $space-4;
+}
+
+.bookingDetail {
+  @include flex-between;
+  padding-block: $space-3;
+  border-bottom: 1px solid $color-border;
+
+  &:last-child { border-bottom: none; }
+}
+
+.bookingDetailLabel {
+  font-size: $text-sm;
+  color: $color-gray;
+}
+
+.bookingDetailValue {
+  font-size: $text-sm;
+  font-weight: $fw-semibold;
+  color: $color-white;
+}
+
+// =============================================================================
+// NEXT STEPS
+// =============================================================================
+
+.nextSteps {
+  @include container;
+  padding-bottom: $space-20;
+  position: relative;
+  z-index: z('raised');
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: $text-3xl;
+  font-weight: $fw-extrabold;
+  margin-bottom: $space-10;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+
+  @include respond-below('md') {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+}
+
+.stepCard {
+  @include card;
+  text-align: center;
+  transition: transform $transition-base;
+
+  &:hover { transform: translateY(-4px); }
+}
+
+.stepNum {
+  width: 52px;
+  height: 52px;
+  border-radius: $radius-full;
+  @include gradient-bg;
+  @include flex-center;
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $fw-extrabold;
+  color: $color-white;
+  margin-inline: auto;
+  margin-bottom: $space-4;
+}
+
+.stepTitle {
+  font-size: $text-lg;
+  font-weight: $fw-bold;
+  color: $color-white;
+  margin-bottom: $space-2;
+}
+
+.stepDesc {
+  font-size: $text-sm;
+  color: $color-gray-light;
+  line-height: $lh-relaxed;
+}
+
+// =============================================================================
+// FREE RESOURCES
+// =============================================================================
+
+.resources {
+  background: $color-dark-2;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+  padding-block: $space-16;
+  position: relative;
+  z-index: z('raised');
+}
+
+.resourcesInner {
+  @include container;
+}
+
+.resourcesHeader {
+  text-align: center;
+  margin-bottom: $space-10;
+}
+
+.resourcesEyebrow {
+  @include badge;
+  margin-bottom: $space-3;
+}
+
+.resourcesTitle {
+  font-size: $text-3xl;
+  font-weight: $fw-extrabold;
+  margin-bottom: $space-2;
+}
+
+.resourcesSubtitle {
+  font-size: $text-base;
+  color: $color-gray-light;
+}
+
+.resourcesGrid {
+  @include grid-auto(260px, $space-5);
+}
+
+.resourceCard {
+  @include card;
+  padding: $space-6;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($color-primary, 0.25);
+  }
+}
+
+.resourceIcon {
+  font-size: 2rem;
+  margin-bottom: $space-4;
+  display: block;
+}
+
+.resourceTitle {
+  font-size: $text-base;
+  font-weight: $fw-bold;
+  color: $color-white;
+  margin-bottom: $space-2;
+}
+
+.resourceDesc {
+  font-size: $text-sm;
+  color: $color-gray;
+  line-height: $lh-relaxed;
+  margin-bottom: $space-4;
+}
+
+.resourceLink {
+  font-size: $text-sm;
+  font-weight: $fw-semibold;
+  color: $color-primary-light;
+  display: flex;
+  align-items: center;
+  gap: $space-1;
+  transition: gap $transition-fast;
+
+  &:hover { gap: $space-2; }
+}
+
+// =============================================================================
+// SHARE / SOCIAL
+// =============================================================================
+
+.share {
+  @include container($container-narrow);
+  text-align: center;
+  padding-block: $space-16;
+  position: relative;
+  z-index: z('raised');
+}
+
+.shareTitle {
+  font-size: $text-2xl;
+  font-weight: $fw-bold;
+  margin-bottom: $space-4;
+}
+
+.shareSubtitle {
+  font-size: $text-base;
+  color: $color-gray-light;
+  margin-bottom: $space-8;
+}
+
+.shareButtons {
+  @include flex-center;
+  flex-wrap: wrap;
+  gap: $space-3;
+}
+
+.shareBtn {
+  @include btn-secondary;
+  padding: $space-3 $space-6;
+  font-size: $text-sm;
+}
+
+// =============================================================================
+// FOOTER
+// =============================================================================
+
+.footer {
+  text-align: center;
+  padding-block: $space-8;
+  border-top: 1px solid $color-border;
+  position: relative;
+  z-index: z('raised');
+}
+
+.footerText {
+  font-size: $text-sm;
+  color: $color-gray;
+}

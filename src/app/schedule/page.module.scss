@@ -1,0 +1,327 @@
+// =============================================================================
+// SCHEDULE PAGE MODULE
+// =============================================================================
+
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+@use '../../styles/abstracts/functions' as *;
+
+// =============================================================================
+// LAYOUT
+// =============================================================================
+
+.page {
+  min-height: 100vh;
+  background: $color-dark;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: $radius-full;
+    background: radial-gradient(circle, rgba($color-accent, 0.1), transparent 70%);
+    bottom: -100px;
+    left: -100px;
+    filter: blur(60px);
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: $radius-full;
+    background: radial-gradient(circle, rgba($color-primary, 0.12), transparent 70%);
+    top: -100px;
+    right: -100px;
+    filter: blur(60px);
+    pointer-events: none;
+  }
+}
+
+.header {
+  padding-block: $space-6;
+  border-bottom: 1px solid $color-border;
+  position: relative;
+  z-index: z('raised');
+}
+
+.headerInner {
+  @include container;
+  @include flex-between;
+}
+
+.logo {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $fw-extrabold;
+  color: $color-white;
+
+  span { @include gradient-text; }
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-sm;
+  color: $color-gray;
+}
+
+.stepDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background: $color-dark-4;
+
+  &.active {
+    background: $color-primary;
+    box-shadow: 0 0 8px rgba($color-primary, 0.5);
+  }
+
+  &.done { background: $color-accent; }
+}
+
+// =============================================================================
+// MAIN
+// =============================================================================
+
+.main {
+  @include container;
+  padding-block: $space-12;
+  position: relative;
+  z-index: z('raised');
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-16;
+  align-items: start;
+
+  @include respond-below('lg') {
+    grid-template-columns: 1fr;
+    gap: $space-10;
+  }
+}
+
+// =============================================================================
+// LEFT PANEL
+// =============================================================================
+
+.left {
+  @include flex-column($space-8);
+}
+
+.eyebrow {
+  @include badge($color-accent);
+  display: inline-flex;
+  width: fit-content;
+}
+
+.title {
+  font-size: clamp($text-3xl, 4vw, $text-5xl);
+  font-weight: $fw-extrabold;
+  letter-spacing: $ls-tight;
+  line-height: $lh-tight;
+
+  span { @include gradient-text; }
+}
+
+.subtitle {
+  font-size: $text-lg;
+  color: $color-gray-light;
+  line-height: $lh-relaxed;
+}
+
+// Survey confirmation pill
+.surveyConfirm {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 $space-5;
+  background: rgba($color-accent, 0.08);
+  border: 1px solid rgba($color-accent, 0.2);
+  border-radius: $radius-lg;
+  font-size: $text-sm;
+  color: $color-gray-light;
+
+  .icon {
+    font-size: $text-xl;
+    flex-shrink: 0;
+  }
+
+  strong { color: $color-accent; }
+}
+
+// What you get list
+.benefitsList {
+  @include flex-column($space-4);
+}
+
+.benefit {
+  display: flex;
+  gap: $space-4;
+  align-items: flex-start;
+}
+
+.benefitIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-lg;
+  @include gradient-bg;
+  @include flex-center;
+  font-size: $text-lg;
+  flex-shrink: 0;
+}
+
+.benefitContent {
+  @include flex-column($space-1);
+}
+
+.benefitTitle {
+  font-weight: $fw-semibold;
+  color: $color-white;
+  font-size: $text-base;
+}
+
+.benefitDesc {
+  font-size: $text-sm;
+  color: $color-gray;
+  line-height: $lh-relaxed;
+}
+
+// Social proof
+.socialProof {
+  @include card;
+  padding: $space-5;
+}
+
+.socialProofStars {
+  color: $color-warning;
+  font-size: $text-lg;
+  margin-bottom: $space-3;
+}
+
+.socialProofText {
+  font-size: $text-sm;
+  color: $color-gray-light;
+  font-style: italic;
+  line-height: $lh-relaxed;
+  margin-bottom: $space-4;
+
+  &::before { content: '"'; }
+  &::after  { content: '"'; }
+}
+
+.socialProofAuthor {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.socialProofAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  @include gradient-bg;
+  @include flex-center;
+  font-size: $text-xs;
+  font-weight: $fw-bold;
+  color: $color-white;
+}
+
+.socialProofName {
+  font-size: $text-sm;
+  font-weight: $fw-semibold;
+  color: $color-white;
+}
+
+.socialProofRole {
+  font-size: $text-xs;
+  color: $color-gray;
+}
+
+// =============================================================================
+// RIGHT PANEL — Calendar
+// =============================================================================
+
+.right {
+  position: relative;
+}
+
+.calendarCard {
+  @include card;
+  padding: 0;
+  overflow: hidden;
+  @include glow($color-primary, 40px, 0.1);
+}
+
+.calendarHeader {
+  padding: $space-6;
+  background: $color-dark-3;
+  border-bottom: 1px solid $color-border;
+  @include flex-between;
+}
+
+.calendarTitle {
+  font-weight: $fw-semibold;
+  color: $color-white;
+  font-size: $text-base;
+}
+
+.calendarDuration {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-sm;
+  color: $color-gray-light;
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: $radius-full;
+    background: $color-accent;
+  }
+}
+
+// GHL calendar embed
+.embedWrapper {
+  padding: $space-2;
+  min-height: 600px;
+
+  iframe {
+    display: block;
+    width: 100%;
+    min-height: 600px;
+    border: none;
+  }
+}
+
+.calendarNote {
+  padding: $space-4 $space-6 $space-6;
+  font-size: $text-xs;
+  color: $color-gray;
+  text-align: center;
+  border-top: 1px solid $color-border;
+}
+
+// =============================================================================
+// FOOTER
+// =============================================================================
+
+.footer {
+  text-align: center;
+  padding-block: $space-8;
+  border-top: 1px solid $color-border;
+  margin-top: $space-12;
+  position: relative;
+  z-index: z('raised');
+}
+
+.footerText {
+  font-size: $text-sm;
+  color: $color-gray;
+}

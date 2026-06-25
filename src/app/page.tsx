@@ -118,7 +118,7 @@ const plans = [
   {
     title: 'Starter Funnel',
     desc: 'Perfect for coaches launching their first funnel or testing a new offer.',
-    price: '999',
+    price: '799',
     badge: null,
     features: [
       { text: '3-page funnel (opt-in, sales, thank you)', included: true },
@@ -134,7 +134,7 @@ const plans = [
   {
     title: 'Pro Funnel',
     desc: 'The complete funnel system for coaches serious about scaling to 6 figures.',
-    price: '2,497',
+    price: '1,497',
     badge: 'Most Popular',
     features: [
       { text: '5-page funnel (full flow)', included: true },
@@ -150,7 +150,7 @@ const plans = [
   {
     title: 'Scale System',
     desc: 'Full-stack funnel ecosystem for coaches running multiple offers.',
-    price: '4,997',
+    price: '2,997',
     badge: null,
     features: [
       { text: '3 complete funnels', included: true },
@@ -261,12 +261,12 @@ export default function Home() {
 
             <p className={s.heroSubtitle}>
               High-converting sales funnels for coaches, consultants & educators.
-              Done for you in 7–14 days — starting at $999.
+              Done for you in 7–14 days — starting at $799.
             </p>
 
             <div className={s.heroActions}>
               <a href="#pricing" className={s.heroCta}>
-                Build My Funnel — From $999
+                Build My Funnel — From $799
               </a>
               <a href="#how-it-works" className={s.heroSecondary}>
                 See How It Works
@@ -548,7 +548,7 @@ export default function Home() {
             </p>
             <div className={s.ctaActions}>
               <a href="#pricing" className={s.ctaBtn}>
-                Start Building — From $999 →
+                Start Building — From $799 →
               </a>
             </div>
             <p className={s.ctaNote}>

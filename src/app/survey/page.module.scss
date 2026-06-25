@@ -1,0 +1,344 @@
+// =============================================================================
+// SURVEY PAGE MODULE
+// =============================================================================
+
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+@use '../../styles/abstracts/functions' as *;
+
+// =============================================================================
+// LAYOUT
+// =============================================================================
+
+.page {
+  min-height: 100vh;
+  background: $color-dark;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: $radius-full;
+    background: radial-gradient(circle, rgba($color-primary, 0.12), transparent 70%);
+    top: -200px;
+    right: -200px;
+    filter: blur(60px);
+    pointer-events: none;
+  }
+}
+
+.header {
+  padding-block: $space-6;
+  border-bottom: 1px solid $color-border;
+  position: relative;
+  z-index: z('raised');
+}
+
+.headerInner {
+  @include container($container-narrow);
+  @include flex-between;
+}
+
+.logo {
+  font-family: $font-display;
+  font-size: $text-xl;
+  font-weight: $fw-extrabold;
+  color: $color-white;
+
+  span { @include gradient-text; }
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: $text-sm;
+  color: $color-gray;
+}
+
+.stepDot {
+  width: 8px;
+  height: 8px;
+  border-radius: $radius-full;
+  background: $color-dark-4;
+
+  &.active {
+    background: $color-primary;
+    box-shadow: 0 0 8px rgba($color-primary, 0.5);
+  }
+
+  &.done {
+    background: $color-accent;
+  }
+}
+
+// =============================================================================
+// MAIN CONTENT
+// =============================================================================
+
+.main {
+  @include container($container-narrow);
+  padding-block: $space-12;
+  position: relative;
+  z-index: z('raised');
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: $space-10;
+}
+
+.eyebrow {
+  @include badge;
+  margin-bottom: $space-4;
+}
+
+.title {
+  font-size: clamp($text-3xl, 4vw, $text-5xl);
+  font-weight: $fw-extrabold;
+  letter-spacing: $ls-tight;
+  margin-bottom: $space-4;
+
+  span { @include gradient-text; }
+}
+
+.subtitle {
+  font-size: $text-lg;
+  color: $color-gray-light;
+  max-width: 520px;
+  margin-inline: auto;
+  line-height: $lh-relaxed;
+}
+
+// =============================================================================
+// PROGRESS BAR
+// =============================================================================
+
+.progress {
+  margin-bottom: $space-10;
+}
+
+.progressHeader {
+  @include flex-between;
+  margin-bottom: $space-2;
+}
+
+.progressLabel {
+  font-size: $text-sm;
+  color: $color-gray;
+}
+
+.progressCount {
+  font-size: $text-sm;
+  font-weight: $fw-semibold;
+  color: $color-primary-light;
+}
+
+.progressTrack {
+  height: 4px;
+  background: $color-dark-4;
+  border-radius: $radius-full;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, $color-primary, $color-secondary);
+  border-radius: $radius-full;
+  transition: width $transition-slow;
+}
+
+// =============================================================================
+// GHL EMBED
+// =============================================================================
+
+.embedWrapper {
+  @include card;
+  padding: $space-2;
+  overflow: hidden;
+  min-height: 500px;
+
+  iframe {
+    display: block;
+    width: 100%;
+    min-height: 500px;
+    border: none;
+    border-radius: $radius-lg;
+  }
+}
+
+// =============================================================================
+// FORM (kept for reference — replaced by GHL embed)
+// =============================================================================
+
+.form {
+  @include flex-column($space-6);
+}
+
+.questionCard {
+  @include card;
+  padding: $space-8;
+  transition: border-color $transition-base;
+
+  &.active {
+    border-color: rgba($color-primary, 0.3);
+  }
+}
+
+.questionNum {
+  font-size: $text-xs;
+  font-weight: $fw-bold;
+  letter-spacing: $ls-wider;
+  text-transform: uppercase;
+  color: $color-primary-light;
+  margin-bottom: $space-2;
+}
+
+.questionText {
+  font-size: $text-lg;
+  font-weight: $fw-semibold;
+  color: $color-white;
+  margin-bottom: $space-5;
+  line-height: $lh-snug;
+}
+
+.options {
+  @include flex-column($space-3);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-4 $space-5;
+  background: $color-dark-3;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba($color-primary, 0.08);
+    border-color: rgba($color-primary, 0.25);
+  }
+
+  &.selected {
+    background: rgba($color-primary, 0.12);
+    border-color: rgba($color-primary, 0.5);
+
+    .optionRadio {
+      background: $color-primary;
+      border-color: $color-primary;
+      box-shadow: 0 0 10px rgba($color-primary, 0.4);
+
+      &::after { opacity: 1; }
+    }
+
+    .optionLabel { color: $color-white; }
+  }
+}
+
+.optionRadio {
+  width: 20px;
+  height: 20px;
+  border-radius: $radius-full;
+  border: 2px solid $color-dark-4;
+  background: transparent;
+  flex-shrink: 0;
+  transition: all $transition-fast;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: $radius-full;
+    background: $color-white;
+    opacity: 0;
+    transition: opacity $transition-fast;
+  }
+}
+
+.optionLabel {
+  font-size: $text-base;
+  color: $color-gray-light;
+  transition: color $transition-fast;
+  line-height: $lh-snug;
+}
+
+// Open text question
+.textarea {
+  width: 100%;
+  background: $color-dark-3;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: $space-4 $space-5;
+  color: $color-white;
+  font-family: $font-primary;
+  font-size: $text-base;
+  line-height: $lh-relaxed;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color $transition-fast;
+
+  &::placeholder { color: $color-gray; }
+
+  &:focus {
+    outline: none;
+    border-color: rgba($color-primary, 0.5);
+    background: rgba($color-primary, 0.04);
+  }
+}
+
+// =============================================================================
+// SUBMIT
+// =============================================================================
+
+.submitArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-4;
+  margin-top: $space-4;
+}
+
+.submitBtn {
+  @include btn-cta;
+  width: 100%;
+  max-width: 400px;
+  font-size: $text-lg;
+  padding: $space-5 $space-10;
+  justify-content: center;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.submitNote {
+  font-size: $text-sm;
+  color: $color-gray;
+  text-align: center;
+}
+
+// =============================================================================
+// FOOTER
+// =============================================================================
+
+.footer {
+  text-align: center;
+  padding-block: $space-8;
+  border-top: 1px solid $color-border;
+  margin-top: $space-12;
+}
+
+.footerText {
+  font-size: $text-sm;
+  color: $color-gray;
+}
