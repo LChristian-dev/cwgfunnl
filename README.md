@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CWGFunnl — Done-For-You Sales Funnels for Coaches
+
+A conversion-focused funnel website built with Next.js 16, React 19, and SCSS. Designed for coaches, educators, and online experts who want high-converting sales funnels built and deployed fast.
+
+---
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | Landing page — hero, problem/solution, how it works, pricing, testimonials, FAQ, CTA |
+| `/survey` | Pre-qualification survey |
+| `/schedule` | Discovery call scheduling |
+| `/thank-you` | Post-submission confirmation |
+
+---
+
+## Pricing
+
+| Package | Price | Delivery |
+|---|---|---|
+| Starter Funnel | $799 | 7 days |
+| Pro Funnel | $1,497 | 10 days |
+| Scale System | $2,997 | 14 days |
+
+---
+
+## Tech Stack
+
+- **Framework** — Next.js 16 (App Router)
+- **UI** — React 19
+- **Styling** — SCSS with a custom design system (variables, mixins, fluid type scale)
+- **Forms** — LeadConnector (GHL) embedded form via modal popup
+- **Package manager** — pnpm
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── page.tsx               # Landing page
+│   ├── page.module.scss
+│   ├── layout.tsx             # Root layout (fonts, global scripts)
+│   ├── icon.svg               # Favicon
+│   ├── survey/                # Survey page
+│   ├── schedule/              # Scheduling page
+│   └── thank-you/             # Thank you page
+└── styles/
+    ├── main.scss              # Entry point
+    ├── abstracts/             # Variables, mixins, functions
+    └── base/                  # Reset, typography, global
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Lead Capture
 
-## Learn More
+The CTA modal embeds a **LeadConnector "Strategy Funnel" form** (`vlR69EFkQpiQzeoshquc`). The form script is loaded lazily via `next/script` in the root layout.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deploy to any Node.js-compatible host (Vercel, Railway, etc.):
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm run build
+pnpm run start
+```
