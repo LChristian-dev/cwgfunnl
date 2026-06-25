@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import s from './page.module.scss';
 
 const niches = [
@@ -219,12 +219,25 @@ const faqs = [
 export default function Home() {
   const [scrolled, setScrolled]   = useState(false);
   const [openFaq, setOpenFaq]     = useState<number | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal  = useCallback((e: React.MouseEvent) => { e.preventDefault(); setModalOpen(true);  }, []);
+  const closeModal = useCallback(() => setModalOpen(false), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    if (modalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [modalOpen]);
 
   return (
     <>
@@ -547,9 +560,9 @@ export default function Home() {
               free and commitment-free.
             </p>
             <div className={s.ctaActions}>
-              <a href="#pricing" className={s.ctaBtn}>
-                Start Building — From $799 →
-              </a>
+              <button onClick={openModal} className={s.ctaBtn}>
+                Start Building →
+              </button>
             </div>
             <p className={s.ctaNote}>
               ✓ Free discovery call &nbsp;·&nbsp; ✓ No contracts &nbsp;·&nbsp; ✓ 14-day support included
@@ -601,6 +614,40 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* FORM MODAL */}
+      {modalOpen && (
+        <div className={s.modalOverlay} onClick={closeModal} role="dialog" aria-modal="true" aria-label="Strategy Funnel Form">
+          <div className={s.modalPanel} onClick={(e) => e.stopPropagation()}>
+            <div className={s.modalHeader}>
+              <div>
+                <p className={s.modalEyebrow}>Free Strategy Session</p>
+                <h2 className={s.modalTitle}>Let&apos;s Build Your Funnel</h2>
+              </div>
+              <button className={s.modalClose} onClick={closeModal} aria-label="Close">✕</button>
+            </div>
+            <div className={s.modalBody}>
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/form/vlR69EFkQpiQzeoshquc"
+                style={{ width: '100%', height: '100%', border: 'none', borderRadius: '8px' }}
+                id="inline-vlR69EFkQpiQzeoshquc"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Strategy Funnel - Form"
+                data-height="461"
+                data-layout-iframe-id="inline-vlR69EFkQpiQzeoshquc"
+                data-form-id="vlR69EFkQpiQzeoshquc"
+                title="Strategy Funnel - Form"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
