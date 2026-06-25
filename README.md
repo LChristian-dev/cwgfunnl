@@ -19,9 +19,9 @@ A conversion-focused funnel website built with Next.js 16, React 19, and SCSS. D
 
 | Package | Price | Delivery |
 |---|---|---|
-| Starter Funnel | $799 | 7 days |
-| Pro Funnel | $1,497 | 10 days |
-| Scale System | $2,997 | 14 days |
+| Starter Funnel | $799 | 10 business days |
+| Pro Funnel | $1,497 | 15 business days |
+| Scale System | $2,997 | 20 business days |
 
 ---
 

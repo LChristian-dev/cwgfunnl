@@ -125,7 +125,7 @@ const plans = [
       { text: 'Mobile-responsive design', included: true },
       { text: 'Basic email integration', included: true },
       { text: 'Copywriting for all pages', included: true },
-      { text: '7-day delivery', included: true },
+      { text: '10 business day delivery', included: true },
       { text: 'A/B testing setup', included: false },
       { text: 'CRM & payment integration', included: false },
     ],
@@ -141,7 +141,7 @@ const plans = [
       { text: 'Mobile-responsive design', included: true },
       { text: 'Email automation (5 sequences)', included: true },
       { text: 'Conversion copywriting', included: true },
-      { text: '10-day delivery', included: true },
+      { text: '15 business day delivery', included: true },
       { text: 'A/B testing setup', included: true },
       { text: 'CRM & payment integration', included: true },
     ],
@@ -157,7 +157,7 @@ const plans = [
       { text: 'Webinar or VSL integration', included: true },
       { text: 'Advanced email automations', included: true },
       { text: 'Premium conversion copy', included: true },
-      { text: '14-day delivery', included: true },
+      { text: '20 business day delivery', included: true },
       { text: 'A/B testing + analytics', included: true },
       { text: 'Full tech stack integration', included: true },
     ],
@@ -288,7 +288,7 @@ export default function Home() {
 
             <div className={s.heroProof}>
               <span>No templates — custom-built</span>
-              <span>7–14 day delivery</span>
+              <span>10–20 business day delivery</span>
               <span>Unlimited revisions</span>
             </div>
 
