@@ -60,7 +60,7 @@ const steps = [
   {
     num: '02',
     title: 'Build & Design',
-    desc: 'Our team builds your full funnel — copy, design, and integrations — in 7–10 business days.',
+    desc: 'Our team builds your full funnel — copy, design, and integrations — in 10–15 business days.',
   },
   {
     num: '03',
@@ -192,7 +192,7 @@ const testimonials = [
 const faqs = [
   {
     q: 'How long does it take to build my funnel?',
-    a: 'Most funnels are delivered in 7–14 business days depending on the package. We move fast without sacrificing quality. The timeline starts after your discovery call and content onboarding.',
+    a: 'Most funnels are delivered in 10–20 business days depending on the package. We move fast without sacrificing quality. The timeline starts once the invoice has been sent and payment is confirmed.',
   },
   {
     q: 'Do I need to write any copy myself?',
@@ -274,7 +274,7 @@ export default function Home() {
 
             <p className={s.heroSubtitle}>
               High-converting sales funnels for coaches, consultants & educators.
-              Done for you in 7–14 days — starting at $799.
+              Done for you in 10–20 business days — starting at $799.
             </p>
 
             <div className={s.heroActions}>
