@@ -31,8 +31,8 @@ const features = [
   },
   {
     icon: '✍️',
-    title: 'Conversion Copywriting',
-    desc: "We write every headline, CTA, and bullet point. Psychology-backed copy that speaks your audience's language.",
+    title: 'AI-Powered Copywriting',
+    desc: "Every headline, CTA, and bullet point is crafted with AI-assisted, psychology-backed copy that speaks your audience's language.",
   },
   {
     icon: '🔗',
@@ -117,14 +117,15 @@ const showcaseNiches = [
 const plans = [
   {
     title: 'Starter Funnel',
-    desc: 'Perfect for coaches launching their first funnel or testing a new offer.',
+    desc: 'Perfect for coaches launching their first AI-powered funnel or testing a new offer.',
     price: '799',
     badge: null,
     features: [
       { text: '3-page funnel (opt-in, sales, thank you)', included: true },
+      { text: 'AI-generated visuals & graphics', included: true },
       { text: 'Mobile-responsive design', included: true },
       { text: 'Basic email integration', included: true },
-      { text: 'Copywriting for all pages', included: true },
+      { text: 'AI-assisted copywriting for all pages', included: true },
       { text: '10 business day delivery', included: true },
       { text: 'A/B testing setup', included: false },
       { text: 'CRM & payment integration', included: false },
@@ -133,14 +134,15 @@ const plans = [
   },
   {
     title: 'Pro Funnel',
-    desc: 'The complete funnel system for coaches serious about scaling to 6 figures.',
+    desc: 'The complete AI-powered funnel system for coaches serious about scaling to 6 figures.',
     price: '1,497',
     badge: 'Most Popular',
     features: [
       { text: '5-page funnel (full flow)', included: true },
+      { text: 'AI-generated visuals & graphics', included: true },
       { text: 'Mobile-responsive design', included: true },
       { text: 'Email automation (5 sequences)', included: true },
-      { text: 'Conversion copywriting', included: true },
+      { text: 'AI-assisted conversion copywriting', included: true },
       { text: '15 business day delivery', included: true },
       { text: 'A/B testing setup', included: true },
       { text: 'CRM & payment integration', included: true },
@@ -149,14 +151,15 @@ const plans = [
   },
   {
     title: 'Scale System',
-    desc: 'Full-stack funnel ecosystem for coaches running multiple offers.',
+    desc: 'Full-stack AI-powered funnel ecosystem for coaches running multiple offers.',
     price: '2,997',
     badge: null,
     features: [
       { text: '3 complete funnels', included: true },
+      { text: 'Custom AI-generated graphics & branding', included: true },
       { text: 'Webinar or VSL integration', included: true },
       { text: 'Advanced email automations', included: true },
-      { text: 'Premium conversion copy', included: true },
+      { text: 'AI-assisted premium conversion copy', included: true },
       { text: '20 business day delivery', included: true },
       { text: 'A/B testing + analytics', included: true },
       { text: 'Full tech stack integration', included: true },
@@ -196,7 +199,7 @@ const faqs = [
   },
   {
     q: 'Do I need to write any copy myself?',
-    a: "Nope. We handle all the copywriting for every page in your funnel. You'll fill out a simple intake form and we take it from there. Our copy is based on proven frameworks for coaches.",
+    a: "Nope. We handle all the copywriting for every page in your funnel using AI-assisted, proven frameworks for coaches — then refine it by hand. You'll fill out a simple intake form and we take it from there.",
   },
   {
     q: 'What platform will my funnel be built on?',
