@@ -9,9 +9,11 @@ A conversion-focused funnel website built with Next.js 16, React 19, and SCSS. D
 | Route | Description |
 |---|---|
 | `/` | Landing page — hero, problem/solution, how it works, pricing, testimonials, FAQ, CTA |
-| `/survey` | Pre-qualification survey |
-| `/schedule` | Discovery call scheduling |
-| `/thank-you` | Post-submission confirmation |
+| `/plan` | Package selection (step 1 of 4) |
+| `/survey` | Pre-qualification survey (step 2 of 4) |
+| `/schedule` | Discovery call scheduling (step 3 of 4) |
+| `/thank-you` | Post-booking confirmation (step 4 of 4) |
+| `/nurture` | Disqualified survey submission follow-up |
 
 ---
 
@@ -44,9 +46,11 @@ src/
 │   ├── page.module.scss
 │   ├── layout.tsx             # Root layout (fonts, global scripts)
 │   ├── icon.svg               # Favicon
+│   ├── plan/                  # Package selection page
 │   ├── survey/                # Survey page
 │   ├── schedule/              # Scheduling page
-│   └── thank-you/             # Thank you page
+│   ├── thank-you/             # Thank you page
+│   └── nurture/               # Disqualified survey follow-up page
 └── styles/
     ├── main.scss              # Entry point
     ├── abstracts/             # Variables, mixins, functions

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "CWGFunnl — Done-For-You Sales Funnels for Coaches",
-  description: "High-converting sales funnels built and deployed in 7–14 days. For coaches, educators, and online experts serious about scaling.",
+  description: "High-converting sales funnels built and deployed in 10–20 business days. For coaches, educators, and online experts serious about scaling.",
 };
 
 export default function RootLayout({

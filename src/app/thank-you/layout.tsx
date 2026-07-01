@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://cwgfunnl.com'),
   openGraph: {
     title: 'High-Converting Funnels for Coaches & Creators — CWGFunnl',
-    description: 'Done-for-you funnel builds that fill your calendar and close more clients. Launch in 7 days, fully integrated.',
+    description: 'Done-for-you funnel builds that fill your calendar and close more clients. Delivered in 10–20 business days, fully integrated.',
     url: 'https://cwgfunnl.com',
     siteName: 'CWGFunnl',
     images: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'High-Converting Funnels for Coaches & Creators — CWGFunnl',
-    description: 'Done-for-you funnel builds that fill your calendar and close more clients. Launch in 7 days, fully integrated.',
+    description: 'Done-for-you funnel builds that fill your calendar and close more clients. Delivered in 10–20 business days, fully integrated.',
     images: ['/og-image.svg'],
   },
 };

@@ -60,7 +60,7 @@ const steps = [
   {
     num: '02',
     title: 'Build & Design',
-    desc: 'Our team builds your full funnel — copy, design, and integrations — in 10–15 business days.',
+    desc: 'Our team builds your full funnel — copy, design, and integrations — in 10–20 business days.',
   },
   {
     num: '03',
