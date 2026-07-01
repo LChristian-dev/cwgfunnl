@@ -804,6 +804,13 @@
   margin-bottom: $space-8;
 }
 
+.pricingFeaturesIntro {
+  font-size: $text-sm;
+  font-weight: $fw-bold;
+  color: $color-gray-light;
+  margin-bottom: $space-3;
+}
+
 .pricingFeature {
   display: flex;
   align-items: flex-start;

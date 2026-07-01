@@ -14,15 +14,15 @@ const plans = [
   {
     id: 'pro',
     name: 'Pro Funnel',
-    price: '$1,497',
+    price: '$1,799',
     desc: '5-page funnel · 15 business day delivery',
     popular: true,
   },
   {
     id: 'scale',
     name: 'Scale System',
-    price: '$2,997',
-    desc: '3 complete funnels · 20 business day delivery',
+    price: '$2,599',
+    desc: '2 complete funnels (up to 5 pages each) · 20 business days for both funnels',
   },
 ];
 
